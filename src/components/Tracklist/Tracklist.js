@@ -5,15 +5,14 @@ import Track from "../Track/Track";
 
 const Tracklist = (props) => {
 
-    console.log(props.tracks);
-
     return (
         <div className="Tracklist">
             {props.tracks.map((track) => {
                 return (
-                    <Track 
-                      track={track}
-                      key={track.id}
+                    <Track
+                        track={track}
+                        key={track.id}
+                        addOrRemove={props.addOrRemove}
                     />
                 );
             })}

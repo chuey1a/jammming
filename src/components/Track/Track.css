@@ -1,3 +1,16 @@
 .Track {
-  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Action {
+    background: none;
+    border: none;
+    color: antiquewhite;
+    font-size: 22px;
+}
+
+.Action:hover {
+    cursor: pointer;
 }

@@ -29,3 +29,9 @@ h1 {
   font-size: 1.88rem;
   color: #fff;
 }
+
+.Playlist {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

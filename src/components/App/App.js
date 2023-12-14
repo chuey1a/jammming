@@ -1,5 +1,8 @@
+import React, { useState } from "react";
+
 import Results from '../Results/Results';
 import SearchBar from '../SearchBar/SearchBar';
+import CustomPlaylist from '../CustomPlaylist/CustomPlaylist';
 import './App.css';
 
 const testTrack1 = {
@@ -18,15 +21,19 @@ const testTrack2 = {
 
 const tracks = [testTrack1, testTrack2];
 
+
 function App() {
+  const [playlist, setPlaylist] = useState([]);
+
   return (
     <div>
       <h1>jammming</h1>
-      <div>
         <div className="App">
           <SearchBar />
-          <Results SearchResults={tracks} />
-        </div>
+          <div className="Playlist">
+            <Results SearchResults={tracks} />
+            <CustomPlaylist newPlaylist={tracks}/>
+          </div>
       </div>
     </div>
   );

@@ -1,0 +1,23 @@
+.CustomPlaylist {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: blueviolet;
+    width: 50%
+}
+
+.Save {
+    background-color: #6c41ec;
+    cursor: pointer;
+    color: antiquewhite;
+    border-radius: 10px;
+    border: none;
+    height: 2rem;
+    width: 50%;
+}
+
+
+.Save:hover {
+    background-color: #4510e5;
+}
