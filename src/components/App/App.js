@@ -1,12 +1,14 @@
+import SearchBar from '../SearchBar/SearchBar';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <h1>
-        Ja<span className="highlight">mmm</span>ing
-      </h1>
-      <div className="App">
+      <h1>jammming</h1>
+      <div>
+        <div className="App">
+          <SearchBar />
+        </div>
       </div>
     </div>
   );
