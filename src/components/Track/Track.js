@@ -4,7 +4,9 @@ import "./Track.css";
 
 const Track = (props) => {
 
-    console.log(props.track)
+    const handleAddOrRemove = () => {
+        props.addOrRemoveFn(props.track)
+    };
 
     return (
         <div className="Track">
@@ -12,7 +14,7 @@ const Track = (props) => {
                 <h3>{props.track.name}</h3>
                 <p>{props.track.artist} - {props.track.album}</p>
             </div>
-            <button className="Action">{props.addOrRemove ? "+" : "-"}</button>
+            <button className="Action" onClick={handleAddOrRemove}>{props.addOrRemove ? "+" : "-"}</button>
         </div>
     );
 }

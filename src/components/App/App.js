@@ -15,15 +15,33 @@ function App() {
     Spotify.search(term).then(setSearchResults);
   };
 
+  const addFn = useCallback(
+    (track) => {
+      if (playlist.some((existingTracks) => existingTracks.id === track.id))
+        return;
+
+      setPlaylist((existingTracks) => [...existingTracks, track]);
+      console.log(playlist);
+    },
+    [playlist]
+  );
+
+  const removeFn = useCallback(
+    (track) => {
+      setPlaylist((existingTracks) => existingTracks.filter((currentTrack) => currentTrack.id !== track.id));
+    },
+    []
+  );
+
   return (
     <div>
       <h1>jammming</h1>
-        <div className="App">
-          <SearchBar onSearch={search} />
-          <div className="Playlist">
-            <Results SearchResults={searchResults} />
-            <CustomPlaylist newPlaylist={playlist}/>
-          </div>
+      <div className="App">
+        <SearchBar onSearch={search} />
+        <div className="Playlist">
+          <Results SearchResults={searchResults} addFn={addFn} />
+          <CustomPlaylist newPlaylist={playlist} removeFn={removeFn} />
+        </div>
       </div>
     </div>
   );

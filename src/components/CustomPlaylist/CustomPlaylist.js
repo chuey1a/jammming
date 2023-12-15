@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 import './CustomPlaylist.css';
 import Tracklist from "../Tracklist/Tracklist";
 
 const CustomPlaylist = (props) => {
 
+    const [playlistName, setPlaylistName] = useState("");
+
+    const nameUpdate = (event) => {
+        setPlaylistName(event.target.value);
+    };
+
     return (
         <div className="CustomPlaylist">
-            <Tracklist tracks={props.newPlaylist} addOrRemove={false} />
+            <input onChange={nameUpdate} placeholder={"New Playlist"} />
+            <Tracklist tracks={props.newPlaylist} addOrRemove={false} addOrRemoveFn={props.removeFn}/>
             <button className="Save">SAVE CREATION</button>
         </div>
     );

@@ -8,7 +8,7 @@ const Results = (props) => {
     return (
         <div className="Results">
             <h2>RESULTS</h2>
-            <Tracklist tracks={props.SearchResults} addOrRemove={true} />
+            <Tracklist tracks={props.SearchResults} addOrRemove={true} addOrRemoveFn={props.addFn} />
         </div>
     );
 }

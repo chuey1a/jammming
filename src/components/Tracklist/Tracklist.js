@@ -13,6 +13,7 @@ const Tracklist = (props) => {
                         track={track}
                         key={track.id}
                         addOrRemove={props.addOrRemove}
+                        addOrRemoveFn={props.addOrRemoveFn}
                     />
                 );
             })}
