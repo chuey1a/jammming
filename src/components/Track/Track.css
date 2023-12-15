@@ -1,16 +1,37 @@
 .Track {
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  border-bottom: 1px solid rgba(256, 256, 256, 0.8);
+
 }
 
 .Action {
     background: none;
-    border: none;
+    border: 0;
     color: antiquewhite;
-    font-size: 22px;
+    padding: 0.2rem;
+    font-size: 1rem;
 }
 
 .Action:hover {
     cursor: pointer;
+    color: rgba(265, 265, 265, .5);
+}
+
+.Track-info {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  height: 5rem;
+}
+
+.Track-info h3 {
+  margin-bottom: .22rem;
+}
+
+.Track-info p {
+  font-size: .83rem;
+  font-weight: 300;
+  color: rgba(256, 256, 256, 0.8);
 }

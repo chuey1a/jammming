@@ -1,5 +1,13 @@
 .Results {
-    background-color: blueviolet;
-    padding: 10px;
-    width: 40%
+    background-color: rgba(2, 13, 62, 0.7);
+    padding: 0.9rem;
+    width: 48%;
+    height: 1000px;
 }
+
+@media only screen and (max-width: 1020px) {
+    .SearchResults {
+      width: 80%;
+      margin-bottom: 2rem;
+    }
+  }

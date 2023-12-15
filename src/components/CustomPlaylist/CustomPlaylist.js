@@ -13,7 +13,7 @@ const CustomPlaylist = (props) => {
 
     return (
         <div className="CustomPlaylist">
-            <input onChange={nameUpdate} placeholder={"New Playlist"} />
+            <input onChange={nameUpdate} id="playlistName" />
             <Tracklist tracks={props.newPlaylist} addOrRemove={false} addOrRemoveFn={props.removeFn}/>
             <button className="Save">SAVE CREATION</button>
         </div>

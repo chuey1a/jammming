@@ -11,9 +11,10 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [playlist, setPlaylist] = useState([]);
 
-  const search = (term) => {
-    Spotify.search(term).then(setSearchResults);
-  };
+  const search = useCallback(
+    (term) => {
+      Spotify.search(term).then(setSearchResults);
+    },[]);
 
   const addFn = useCallback(
     (track) => {
@@ -21,7 +22,6 @@ function App() {
         return;
 
       setPlaylist((existingTracks) => [...existingTracks, track]);
-      console.log(playlist);
     },
     [playlist]
   );
