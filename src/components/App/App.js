@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 
 import Results from '../Results/Results';
 import SearchBar from '../SearchBar/SearchBar';
@@ -12,6 +12,10 @@ function App() {
   const [playlist, setPlaylist] = useState([]);
   const [playlistName, setPlaylistName] = useState("");
 
+  useEffect(() => {
+    window.addEventListener('load', () => { Spotify.getAccessToken() });
+  },
+    []);
   const search = useCallback(
     (term) => {
       Spotify.search(term).then(setSearchResults);
@@ -54,10 +58,10 @@ function App() {
         <div className="Playlist">
           <Results SearchResults={searchResults} addFn={addFn} />
           <CustomPlaylist
-          newPlaylist={playlist}
-          removeFn={removeFn}
-          onSave={savePlaylist}
-          onNameChange={updatePlaylistName}/>
+            newPlaylist={playlist}
+            removeFn={removeFn}
+            onSave={savePlaylist}
+            onNameChange={updatePlaylistName} />
         </div>
       </div>
     </div>
