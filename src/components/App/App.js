@@ -13,9 +13,8 @@ function App() {
   const [playlistName, setPlaylistName] = useState("");
 
   useEffect(() => {
-    window.addEventListener('load', () => { Spotify.getAccessToken() });
-  },
-    []);
+    Spotify.getAccessToken()
+  }, []);
   const search = useCallback(
     (term) => {
       Spotify.search(term).then(setSearchResults);
