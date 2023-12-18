@@ -7,16 +7,24 @@ import Spotify from "../../utility/Spotify";
 
 import './App.css';
 
+export interface iTrack {
+  id: string;
+  uri: string;
+  name: string;
+  artist: string;
+  album: string;
+}
+
 function App() {
   const [searchResults, setSearchResults] = useState([]);
-  const [playlist, setPlaylist] = useState([]);
+  const [playlist, setPlaylist] = useState<iTrack[]>([]);
   const [playlistName, setPlaylistName] = useState("");
 
   useEffect(() => {
     Spotify.getAccessToken()
   }, []);
   const search = useCallback(
-    (term) => {
+    (term: any) => {
       Spotify.search(term).then((results) => {
         results.length = 12;
         setSearchResults(results);
@@ -24,8 +32,8 @@ function App() {
     }, []);
 
   const addFn = useCallback(
-    (track) => {
-      if (playlist.some((existingTracks) => existingTracks.id === track.id))
+    (track: iTrack) => {
+      if (playlist.some((existingTracks: iTrack) => existingTracks.id === track.id))
         return;
 
       setPlaylist((existingTracks) => [...existingTracks, track]);
@@ -34,22 +42,32 @@ function App() {
   );
 
   const removeFn = useCallback(
-    (track) => {
-      setPlaylist((existingTracks) => existingTracks.filter((currentTrack) => currentTrack.id !== track.id));
+    (track: { id: string; }) => {
+      setPlaylist((existingTracks) => existingTracks.filter((currentTrack: iTrack) => currentTrack.id !== track.id));
     },
     []
   );
 
-  const updatePlaylistName = useCallback((name) => {
+  const updatePlaylistName = useCallback((name: React.SetStateAction<string>) => {
     setPlaylistName(name);
   }, []);
 
   const savePlaylist = useCallback(() => {
-    const trackUris = playlist.map((track) => track.uri);
-    Spotify.savePlaylist(playlistName, trackUris).then(() => {
-      setPlaylistName("New Playlist");
-      setPlaylist([]);
-    });
+    const trackUris = playlist.map((track: iTrack) => track.uri);
+    const savePromise = Spotify.savePlaylist(playlistName, trackUris);
+
+    if (savePromise) {
+      savePromise.then(() => {
+        setPlaylistName("New Playlist");
+        setPlaylist([]);
+      }).catch((error) => {
+        // Handle errors if necessary
+        console.error("Save playlist error:", error);
+      });
+    } else {
+      // Handle the case where the promise is undefined
+      console.warn("Save playlist promise is undefined");
+    }
   }, [playlistName, playlist]);
 
   return (

@@ -3,7 +3,7 @@ import React from "react";
 import './Results.css';
 import Tracklist from "../Tracklist/Tracklist";
 
-const Results = (props) => {
+const Results = (props: { SearchResults: any; addFn: any; }) => {
 
     return (
         <div className="Results">

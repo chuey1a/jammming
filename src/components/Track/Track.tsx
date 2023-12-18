@@ -1,8 +1,9 @@
 import React from "react";
 
+import {iTrack} from "../App/App";
 import "./Track.css";
 
-const Track = (props) => {
+const Track = (props: {addOrRemove: boolean; id: string; addOrRemoveFn: Function; track: iTrack; }) => {
 
     const handleAddOrRemove = () => {
         props.addOrRemoveFn(props.track)

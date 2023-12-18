@@ -3,9 +3,9 @@ import React from "react";
 import './CustomPlaylist.css';
 import Tracklist from "../Tracklist/Tracklist";
 
-const CustomPlaylist = (props) => {
+const CustomPlaylist = (props: { onNameChange: (arg0: any) => void; newPlaylist: any[]; removeFn: any; onSave: React.MouseEventHandler<HTMLButtonElement> | undefined; }) => {
 
-    const nameUpdate = (event) => {
+    const nameUpdate = (event: { target: { value: any; }; }) => {
         props.onNameChange(event.target.value);
     };
 

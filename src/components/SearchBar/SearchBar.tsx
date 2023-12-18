@@ -2,18 +2,18 @@ import React, { useState, useCallback } from "react";
 
 import "./SearchBar.css";
 
-const SearchBar = (props) => {
+const SearchBar = (props: { onSearch: Function; }) => {
     const [term, setTerm] = useState("");
 
     const handleSearchChange = useCallback(
-        (event) => {
+        (event: { target: { value: React.SetStateAction<string>; }; }) => {
             setTerm(event.target.value);
         },
         []
     );
 
     const search = useCallback(
-        (event) => {
+        (event: any) => {
             props.onSearch(term);
         },
         [props.onSearch, term]
