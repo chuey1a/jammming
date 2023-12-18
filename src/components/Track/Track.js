@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./Track.css";
 
@@ -11,7 +11,7 @@ const Track = (props) => {
     return (
         <div className="Track">
             <div className="Track-info">
-                <h3>{props.track.name}</h3>
+                <h4>{props.track.name}</h4>
                 <p>{props.track.artist} - {props.track.album}</p>
             </div>
             <button className="Action" onClick={handleAddOrRemove}>{props.addOrRemove ? "+" : "-"}</button>

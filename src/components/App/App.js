@@ -17,7 +17,10 @@ function App() {
   }, []);
   const search = useCallback(
     (term) => {
-      Spotify.search(term).then(setSearchResults);
+      Spotify.search(term).then((results) => {
+        results.length = 12;
+        setSearchResults(results);
+      });
     }, []);
 
   const addFn = useCallback(
